@@ -1,10 +1,10 @@
 ---
-description: Write your first program using the Zig programming language.
+description: 用 Zig 编写您的第一个程序。
 ---
 
 # Hello World
 
-Create a file called `main.zig`, with the following contents:
+创建一个名为 `main.zig` 的文件，包含以下内容：
 
 ```zig
 const std = @import("std");
@@ -14,9 +14,9 @@ pub fn main() void {
 }
 ```
 
-Use `zig run main.zig` to build and run it. In this example, `Hello, World!`
-will be written to stderr, and is assumed to never fail.
+使用 `zig run main.zig` 来构建并运行它。在此示例中，`Hello, World!`
+将被输出到 stderr，并假定永远不会失败。
 
-:::warning found 'invalid bytes'
-Make sure your `main.zig` file is UTF-8 encoded as the Zig compiler does not currently support other encodings. To re-encode your file as UTF-8, run `zig fmt main.zig` and reopen the file in your editor.
+:::warning 出现 'invalid bytes'
+确保您的 `main.zig` 文件使用 UTF-8 编码，因为 Zig 当前不支持其他的编码类型。要将文件重新编码为 UTF-8，请运行 `zig fmt main.zig` 然后在编辑器中重新打开文件。
 :::

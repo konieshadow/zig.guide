@@ -1,11 +1,11 @@
 ---
-description: Installation instructions for the Zig programming language on Linux, Windows, and macOS.
+description: Zig 编程语言在 Linux、Windows 和 macOS 上的安装说明。
 ---
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-# Installation
+# 安装
 
 <Tabs
     defaultValue="linux"
@@ -15,34 +15,34 @@ import TabItem from "@theme/TabItem";
         {label: 'macOS', value: 'macos'},
     ]}>
     <TabItem value="linux">
-    Consider getting Zig from your distribution's [package manager](https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager). Most major linux distros package the latest Zig release.
+    考虑从您的发行版的包管理器获取(https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager) Zig。大多数主要的 Linux 发行版都包含最新的 Zig 版本。
 
-    ### Installing manually
+    ### 手动安装
 
-    1. [Download](https://ziglang.org/download/#release-0.11.0) a prebuilt version of Zig.
+    1. [下载](https://ziglang.org/download/#release-0.11.0) Zig 的预构建版本。
 
-        Choose a build of Zig 0.11 for linux that matches your CPU architecture. If you're unsure which architecture you're using, this can be found with:
+        选择与您的 CPU 架构相匹配的 Zig 0.11 for linux 版本。如果您不确定正在使用哪种架构，可以通过以下方式找到：
 
         ```bash
         uname -m
         ```
 
-    2. Extract the archive using tar, e.g.
+    2. 使用 tar 提取存档，例如：
 
         ```bash
         tar xf zig-linux-x86_64-0.11.0.tar.xz
         ```
 
-    3. Add the location of your Zig binary to your path, e.g.
+    3. 将 Zig 二进制文件的位置添加到您的 path 中，例如：
 
         ```bash
         echo 'export PATH="$HOME/zig-linux-x86_64-0.11.0:$PATH"' >> ~/.bashrc
         ```
     </TabItem>
     <TabItem value="windows">
-    Consider getting Zig from a package manager such as [chocolatey](https://chocolatey.org/), [scoop](https://scoop.sh/), or [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget).
+    考虑从包管理器（例如 [chocolatey](https://chocolatey.org/)、[scoop](https://scoop.sh/) 或 [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)）获取 Zig。
 
-    All commands shown are to be used inside powershell.
+    展示的所有命令都要在 powershell 内使用。
 
     ```powershell
     choco install zig
@@ -54,25 +54,25 @@ import TabItem from "@theme/TabItem";
     scoop install zig
     ```
 
-    ### Installing manually
+    ### 手动安装
 
-    1. [Download](https://ziglang.org/download/#release-0.11.0) a prebuilt version of Zig.
+    1. [下载](https://ziglang.org/download/#release-0.11.0) Zig 的预构建版本。
 
-        Choose a build of Zig 0.11 for windows that matches your CPU architecture. Most Windows systems use `x86_64`, also known as `AMD64`. If you're unsure which architecture you're using, this can be found with:
+        选择适合您的 CPU 架构的 Zig 0.11 版本。大多数 Windows 系统使用 x86_64，也称为 AMD64。如果您不确定正在使用哪种架构，可以通过以下方式找到：
 
         ```powershell
         $Env:PROCESSOR_ARCHITECTURE
         ```
 
-    2. Extract Zig.
+    2. 提取 Zig。
 
-    3. Add Zig to your path:
+    3. 添加 Zig 到您的 path：
 
         <Tabs
         defaultValue="user"
         values={[
-            {label: 'Current User', value: 'user'},
-            {label: 'System Wide', value: 'system'},
+            {label: '当前用户', value: 'user'},
+            {label: '系统', value: 'system'},
         ]}>
         <TabItem value="user">
 
@@ -97,13 +97,13 @@ import TabItem from "@theme/TabItem";
         </TabItem>
         </Tabs>
 
-        Close your terminal and create a new one.
+        关闭您的终端，并启动一个新终端。
 
 
     </TabItem>
 
     <TabItem value="macos">
-    Consider getting Zig from a package manager such as [brew](https://brew.sh/).
+    考虑从包管理器（例如 [brew](https://brew.sh/)）获取 Zig。
 
     ```
     brew install zig
@@ -112,17 +112,17 @@ import TabItem from "@theme/TabItem";
 
 </Tabs>
 
-### Verifying your install
+### 验证安装
 
-Verify your installation with `zig version`. The output should look like this:
+使用 `zig version` 命令验证安装。输出应该看起来像：
 
 ```
 $ zig version
 0.11.0
 ```
 
-### Extras
+### 附加功能
 
-For completions and go-to-definition in your editor, consider installing the [Zig Language Server](https://github.com/zigtools/zls/#installation).
+为了在编辑器中实现代码补全和转到定义，请考虑安装 [Zig 语言服务器](https://github.com/zigtools/zls/#installation)。
 
-Consider joining a [Zig community](https://github.com/ziglang/zig/wiki/Community).
+考虑加入一个 [Zig 社区](https://github.com/ziglang/zig/wiki/Community)。
