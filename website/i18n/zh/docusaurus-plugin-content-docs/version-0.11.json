@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Zig 0.11.0",
+    "description": "The label for version 0.11"
+  },
+  "sidebar.tutorialSidebar.category.Getting Started": {
+    "message": "起步",
+    "description": "The label for category Getting Started in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Language": {
+    "message": "Language",
+    "description": "The label for category Language in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Standard Library": {
+    "message": "Standard Library",
+    "description": "The label for category Standard Library in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Build System": {
+    "message": "Build System",
+    "description": "The label for category Build System in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Working with C": {
+    "message": "Working with C",
+    "description": "The label for category Working with C in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Async": {
+    "message": "Async",
+    "description": "The label for category Async in sidebar tutorialSidebar"
+  }
+}
