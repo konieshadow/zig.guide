@@ -1,7 +1,6 @@
-# Labelled Loops
+# 命名循环
 
-Loops can be given labels, allowing you to `break` and `continue` to outer
-loops.
+可以给循环赋予标签，这样可以 `break` 和 `continue` 外层循环。
 
 ```zig
 test "nested continue" {

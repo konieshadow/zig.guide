@@ -1,8 +1,7 @@
-# Loops as Expressions
+# 循环作为表达式
 
-Like `return`, `break` accepts a value. This can be used to yield a value from a
-loop. Loops in Zig also have an `else` branch, which is evaluated when the loop
-is not exited with a `break`.
+像 `return` 一样，`break` 接受一个值。这可用于从循环中产生一个值。
+Zig 中的循环还有一个 `else` 分支，当循环未通过中断退出时，将从该分支产生值。
 
 ```zig
 fn rangeHasNumber(begin: usize, end: usize, number: usize) bool {

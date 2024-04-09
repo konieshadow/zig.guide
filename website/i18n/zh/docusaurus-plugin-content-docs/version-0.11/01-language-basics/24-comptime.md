@@ -1,8 +1,7 @@
 # Comptime
 
-Blocks of code may be forcibly executed at compile time using the
-[`comptime`](https://ziglang.org/documentation/master/#comptime) keyword. In
-this example, the variables x and y are equivalent.
+可以使用 [`comptime`](https://ziglang.org/documentation/master/#comptime) 关键字使块中的代码强制在编译时执行。
+在此示例中，变量 x 和 y 使等效的。
 
 ```zig
 test "comptime blocks" {
@@ -16,10 +15,8 @@ test "comptime blocks" {
 }
 ```
 
-Integer literals are of the type `comptime_int`. These are special in that they
-have no size (they cannot be used at runtime!), and they have arbitrary
-precision. `comptime_int` values coerce to any integer type that can hold them.
-They also coerce to floats. Character literals are of this type.
+整数字面量的类型是 `comptime_int`，它们的特殊之处在于它们没有大小（它们不能在运行时使用），并且它们具有任意精度。
+ `comptime_int` 值可转换为任何可以容纳它们的整数类型。它们还可以转换为浮点数。字符字面量就是这种类型。
 
 ```zig
 test "comptime_int" {
@@ -33,13 +30,9 @@ test "comptime_int" {
 }
 ```
 
-`comptime_float` is also available, which internally is an `f128`. These cannot
-be coerced to integers, even if they hold an integer value.
+`comptime_float` 也是存在的，其内部为 `f128`。它们不能转换为整数，即使它们包含整数值。
 
-Types in Zig are values of the type `type`. These are available at compile time.
-We have previously encountered them by checking
-[`@TypeOf`](https://ziglang.org/documentation/master/#TypeOf) and comparing with
-other types, but we can do more.
+Zig 中的类型是类型为 `type` 的值。这些值在编译时可用。我们之前通过检查 [`@TypeOf`](https://ziglang.org/documentation/master/#TypeOf) 并与其他类型进行比较时遇到过它们，但我们还可以做得更多。
 
 ```zig
 test "branching on types" {
@@ -49,11 +42,7 @@ test "branching on types" {
 }
 ```
 
-Function parameters in Zig can be tagged as being
-[`comptime`](https://ziglang.org/documentation/master/#comptime). This means
-that the value passed to that function parameter must be known at compile time.
-Let's make a function that returns a type. Notice how this function is
-PascalCase, as it returns a type.
+Zig 中的函数参数可以标记为 [`comptime`](https://ziglang.org/documentation/master/#comptime)。这意味着传递给该函数参数的值必须在编译时已知。让我们创建一个返回类型的函数。请注意该函数使用 PascalCase 命名，因为它返回一个类型。
 
 ```zig
 fn Matrix(
@@ -69,11 +58,7 @@ test "returning a type" {
 }
 ```
 
-We can reflect upon types using the built-in
-[`@typeInfo`](https://ziglang.org/documentation/master/#typeInfo), which takes
-in a `type` and returns a tagged union. This tagged union type can be found in
-[`std.builtin.TypeInfo`](https://ziglang.org/documentation/master/std/#std;builtin.TypeInfo)
-(info on how to make use of imports and std later).
+我们可以使用内置的 [`@typeInfo`](https://ziglang.org/documentation/master/#typeInfo) 来对类型使用反射，它接受一个类型并返回一个标记联合类型。这个标记联合类型可以在 [`std.builtin.TypeInfo`](https://ziglang.org/documentation/master/std/#std;builtin.TypeInfo) 中找到。
 
 ```zig
 fn addSmallInts(comptime T: type, a: T, b: T) T {
@@ -94,16 +79,11 @@ test "typeinfo switch" {
 }
 ```
 
-We can use the [`@Type`](https://ziglang.org/documentation/master/#Type)
-function to create a type from a
-[`@typeInfo`](https://ziglang.org/documentation/master/#typeInfo).
-[`@Type`](https://ziglang.org/documentation/master/#Type) is implemented for
-most types but is notably unimplemented for enums, unions, functions, and
-structs.
+我们可以使用 [`@Type`](https://ziglang.org/documentation/master/#Type) 函数从 [`@typeInfo`](https://ziglang.org/documentation/master/#typeInfo) 创建类型。
+[`@Type`](https://ziglang.org/documentation/master/#Type) 已经为大多数类型做了实现，但对于枚举、联合类型、函数和结构体特意未实现。
 
-Here anonymous struct syntax is used with `.{}`, because the `T` in `T{}` can be
-inferred. Anonymous structs will be covered in detail later. In this example we
-will get a compile error if the `Int` tag isn't set.
+这里通过 `.{}` 语法使用了匿名结构体，因为 `T{}` 中的 `T` 可以被推断出来。稍后会详细介绍匿名结构体。
+在此示例中，如果未设置 `Int` 标记，我们将收到编译错误。
 
 ```zig
 fn GetBiggerInt(comptime T: type) type {
@@ -121,11 +101,7 @@ test "@Type" {
 }
 ```
 
-Returning a struct type is how you make generic data structures in Zig. The
-usage of [`@This`](https://ziglang.org/documentation/master/#This) is required
-here, which gets the type of the innermost struct, union, or enum. Here
-[`std.mem.eql`](https://ziglang.org/documentation/master/std/#std;mem.eql) is
-also used which compares two slices.
+返回结构体类型是在 Zig 中创建通用数据结构的方式。这里需要使用 [`@This`](https://ziglang.org/documentation/master/#This)，它获取最里面的结构体、联合类型或枚举的类型。这里还使用了 [`std.mem.eql`](https://ziglang.org/documentation/master/std/#std;mem.eql) 来比较两个切片。
 
 ```zig
 fn Vec(
@@ -162,9 +138,7 @@ test "generic vector" {
 }
 ```
 
-The types of function parameters can also be inferred by using `anytype` in
-place of a type. [`@TypeOf`](https://ziglang.org/documentation/master/#TypeOf)
-can then be used on the parameter.
+还可以通过使用 `anytype` 来代替函数的参数类型。然后可以在参数上使用 [`@TypeOf`](https://ziglang.org/documentation/master/#TypeOf)。
 
 ```zig
 fn plusOne(x: anytype) @TypeOf(x) {
@@ -176,8 +150,7 @@ test "inferred function parameter" {
 }
 ```
 
-Comptime also introduces the operators `++` and `**` for concatenating and
-repeating arrays and slices. These operators do not work at runtime.
+Comptime 还引入了运算符 `++` 和 `**` 用于连接和复制数组与切片。这些运算符在运行时不起作用。
 
 ```zig
 test "++" {

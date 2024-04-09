@@ -2,17 +2,15 @@ import CodeBlock from "@theme/CodeBlock";
 
 import Pointers from "!!raw-loader!./11.pointers.zig";
 
-# Pointers
+# 指针
 
-Normal pointers in Zig cannot have 0 or null as a value. They follow the syntax
-`*T`, where `T` is the child type.
+Zig 中的普通指针不能将 0 或 null 作为值。它们遵循语法 `*T`，其中 `T` 是子类型。
 
-Referencing is done with `&variable`, and dereferencing is done with
-`variable.*`.
+引用是通过 `&variable` 完成的，解引用是通过 `variable.*` 完成的。
 
 <CodeBlock language="zig">{Pointers}</CodeBlock>
 
-Trying to set a `*T` to the value 0 is detectable illegal behaviour.
+尝试将 `*T` 的值设置为 0 是可检测的非法行为。
 
 <!--fail_test-->
 
@@ -31,8 +29,7 @@ Test [23/126] test.naughty pointer... thread 21598 panic: cast causes pointer to
                  ^
 ```
 
-Zig also has const pointers, which cannot be used to modify the referenced data.
-Referencing a const variable will yield a const pointer.
+Zig 还有 const 指针，不能用来修改引用的数据。引用 const 变量将产生 const 指针。
 
 <!--fail_test-->
 
@@ -50,4 +47,4 @@ error: cannot assign to constant
         ^
 ```
 
-A `*T` coerces to a `*const T`.
+一个 `*T` 可转换为 `*const T`。

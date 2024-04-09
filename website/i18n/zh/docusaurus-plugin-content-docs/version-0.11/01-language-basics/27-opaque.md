@@ -1,9 +1,7 @@
-# Opaque
+# 不透明类型
 
-[`opaque`](https://ziglang.org/documentation/master/#opaque) types in Zig have
-an unknown (albeit non-zero) size and alignment. Because of this these data
-types cannot be stored directly. These are used to maintain type safety with
-pointers to types that we don't have information about.
+不透明（[`opaque`](https://ziglang.org/documentation/master/#opaque)）类型在 Zig 中具有未知（尽管非零）的大小和对齐方式。
+因此这些数据类型不能直接存储。它们用于通过指向我们没有相关信息的类型的指针来维护类型安全。
 
 <!--fail_test-->
 
@@ -31,8 +29,7 @@ test "opaque" {
                 ^
 ```
 
-Opaque types may have declarations in their definitions (the same as structs,
-enums and unions).
+不透明类型可以在其定义中具有声明（与结构体、枚举和联合类型相同）。
 
 <!--no_test-->
 
@@ -51,5 +48,4 @@ test "opaque with declarations" {
 }
 ```
 
-The typical usecase of opaque is to maintain type safety when interoperating
-with C code that does not expose complete type information.
+不透明类型的典型用例是在与不公开完整类型信息的 C 代码互操作时维护类型安全。

@@ -1,16 +1,15 @@
-# Arrays
+# 数组
 
-Arrays are denoted by `[N]T`, where `N` is the number of elements in the array
-and `T` is the type of those elements (i.e., the array's child type).
+数组用 `[N]T` 表示，其中 `N` 是数组中元素的数量，`T` 是这些元素的类型（即数组的子类型）。
 
-For array literals, `N` may be replaced by `_` to infer the size of the array.
+对于数组字面量，`N` 可以替换为 `_` 以自动推断数组的大小。
 
 ```zig
 const a = [5]u8{ 'h', 'e', 'l', 'l', 'o' };
 const b = [_]u8{ 'w', 'o', 'r', 'l', 'd' };
 ```
 
-To get the size of an array, simply access the array's `len` field.
+要获取数组的大小，访问数组的 `len` 字段即可。
 
 ```zig
 const array = [_]u8{ 'h', 'e', 'l', 'l', 'o' };

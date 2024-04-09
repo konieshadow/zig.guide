@@ -3,20 +3,15 @@ import CodeBlock from "@theme/CodeBlock";
 import Expect from "!!raw-loader!./03.expect.zig";
 import IfExpression from "!!raw-loader!./03.if-expression.zig";
 
-# If Expressions
+# If 表达式
 
-Zig's if statements accept `bool` values (i.e. `true` or `false`). Unlike languages
-like C or Javascript, there are no values that implicitly coerce to bool values.
+Zig 的 if 语句接受 `bool` 值（即 `true` 或 `false`）。与 C 或 Javascript 不同，没有任何值可以隐式转换为 bool 值。
 
-Here, we will introduce testing. Save the below code and compile + run it with
-`zig test file-name.zig`. We will be using the
-[`expect`](https://ziglang.org/documentation/master/std/#std;testing.expect)
-function from the standard library, which will cause the test to fail if it's
-given the value `false`. When a test fails, the error and stack trace will be
-shown.
+在这里，我们引入测试。保存以下代码并使用 `zig test file-name.zig` 编译和运行它。我们将使用标准库中的 [`expect`](https://ziglang.org/documentation/master/std/#std;testing.expect)
+函数，如果给定值为 `false`，将导致测试失败。当测试失败时，将显示错误和堆栈跟踪。
 
 <CodeBlock language="zig">{Expect}</CodeBlock>
 
-If statements also work as expressions.
+If 语句也可以用作表达式。
 
 <CodeBlock language="zig">{IfExpression}</CodeBlock>

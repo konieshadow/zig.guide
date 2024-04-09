@@ -4,9 +4,9 @@ import IntegerWidening from "!!raw-loader!./18.integer-widening.zig";
 import IntegerCasting from "!!raw-loader!./18.integer-casting.zig";
 import IntegerSafeOverflow from "!!raw-loader!./18.integer-safe-overflow.zig";
 
-# Integer Rules
+# 整数规则
 
-Zig supports hex, octal and binary integer literals.
+Zig 支持十六进制、八进制和二进制整数字面量。
 
 ```zig
 const decimal_int: i32 = 98222;
@@ -16,7 +16,7 @@ const octal_int: u16 = 0o755;
 const binary_int: u8 = 0b11110000;
 ```
 
-Underscores may also be placed between digits as a visual separator.
+下划线也可以放置在数字之间作为视觉分隔符。
 
 ```zig
 const one_billion: u64 = 1_000_000_000;
@@ -25,25 +25,18 @@ const permissions: u64 = 0o7_5_5;
 const big_address: u64 = 0xFF80_0000_0000_0000;
 ```
 
-"Integer Widening" is allowed, which means that integers of a type may coerce to
-an integer of another type, providing that the new type can fit all of the
-values that the old type can.
+“整数加宽”是允许的，这意味着一种类型的整数可以转换为另一种类型的整数，前提是新类型可以容纳旧类型可以容纳的所有值。
 
 <CodeBlock language="zig">{IntegerWidening}</CodeBlock>
 
-If you have a value stored in an integer that cannot coerce to the type that you
-want, [`@intCast`](https://ziglang.org/documentation/master/#intCast) may be
-used to explicitly convert from one type to the other. If the value given is out
-of the range of the destination type, this is detectable illegal behaviour.
+如果您存储在整数中的值无法转换为所需的类型，则可以使用 [`@intCast`](https://ziglang.org/documentation/master/#intCast) 显式地从一种类型转换为另一种类型。
+如果给定的值超出目标类型的范围，则这是可检测的非法行为。
 
 <CodeBlock language="zig">{IntegerCasting}</CodeBlock>
 
-Integers, by default, are not allowed to overflow. Overflows are detectable
-illegal behaviour. Sometimes, being able to overflow integers in a well-defined
-manner is a wanted behaviour. For this use case, Zig provides overflow
-operators.
+默认情况下，整数不允许溢出。溢出是可检测的非法行为。有时，能够以明确定义的方式溢出整数是一种想要的行为。对于此用例，Zig 提供了溢出运算符。
 
-| Normal Operator | Wrapping Operator |
+| 普通运算符 | 溢出运算符 |
 | --------------- | ----------------- |
 | +               | +%                |
 | -               | -%                |

@@ -2,14 +2,12 @@ import CodeBlock from "@theme/CodeBlock";
 
 import TaggedUnion from "!!raw-loader!./17.union-tagged.zig";
 
-# Unions
+# 联合类型
 
-Zig's unions allow you to define types which store one value of many possible
-typed fields; only one field may be active at one time.
+Zig 的联合类型允许您定义存储许多可能类型字段的一个值的类型；一次只能有一个字段处于活动状态。
 
-Bare union types do not have a guaranteed memory layout. Because of this, bare
-unions cannot be used to reinterpret memory. Accessing a field in a union which
-is not active is detectable illegal behaviour.
+裸联合类型没有一个保证的内存布局。因此，裸联合类型不能用于重新解释内存。
+访问联合类型中未激活的字段是可检测的非法行为。
 
 ```zig
 const Result = union {
@@ -31,24 +29,18 @@ test "simple union"...access of inactive union field
            ^
 ```
 
-Tagged unions are unions which use an enum to detect which field is active. Here
-we make use of payload capturing again, to switch on the tag type of a union
-while also capturing the value it contains. Here we use a _pointer capture_;
-captured values are immutable, but with the `|*value|` syntax, we can capture a
-pointer to the values instead of the values themselves. This allows us to use
-dereferencing to mutate the original value.
+标记联合类型是使用枚举来检测哪个字段处于活动状态的联合类型。这里我们再次使用负载捕获，选择联合类型的标记，同时捕获它包含的值。
+这里我们使用指针捕获；捕获的值是不可变的，但带有 `|*value|` 的语法中，我们可以捕获指向值的指针而不是值本身。这允许我们使用解引用来改变原始值。
 
 <CodeBlock language="zig">{TaggedUnion}</CodeBlock>
 
-The tag type of a tagged union can also be inferred. This is equivalent to the
-Tagged type above.
+还可以推断标记联合类型的标记类型。这与上面的 Tagged 类型一致。
 
 ```zig
 const Tagged = union(enum) { a: u8, b: f32, c: bool };
 ```
 
-`void` member types can have their type omitted from the syntax. Here, none is
-of type `void`.
+`void` 成员类型可以在语法中省略其类型。在这里，none 就是 `void` 类型。
 
 ```zig
 const Tagged2 = union(enum) { a: u8, b: f32, c: bool, none };

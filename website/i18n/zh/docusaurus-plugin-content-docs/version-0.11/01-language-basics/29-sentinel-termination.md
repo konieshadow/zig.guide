@@ -1,13 +1,10 @@
-# Sentinel Termination
+# 哨兵终止
 
-Arrays, slices and many pointers may be terminated by a value of their child
-type. This is known as sentinel termination. These follow the syntax `[N:t]T`,
-`[:t]T`, and `[*:t]T`, where `t` is a value of the child type `T`.
+数组、切片和许多指针可以以其子类型的值终止。这称为哨兵终止（sentinel termination)。
+它们遵循语法 `[N:t]T`、`[:t]T` 和 `[*:t]T`，其中 `t` 是子类型 `T` 的值。
 
-An example of a sentinel terminated array. The built-in
-[`@ptrCast`](https://ziglang.org/documentation/master/#ptrCast) is used to
-perform an unsafe type conversion. This shows us that the last element of the
-array is followed by a 0 byte.
+哨兵终止数组的示例。内置的 [`@ptrCast`](https://ziglang.org/documentation/master/#ptrCast) 用于执行不安全的类型转换。
+这表明数组的最后一个元素后面跟着一个值为 0 的字节。
 
 ```zig
 test "sentinel termination" {
@@ -17,9 +14,8 @@ test "sentinel termination" {
 }
 ```
 
-The types of string literals is `*const [N:0]u8`, where N is the length of the
-string. This allows string literals to coerce to sentinel terminated slices, and
-sentinel terminated many pointers. Note: string literals are UTF-8 encoded.
+字符串字面量的类型为 `*const [N:0]u8`，其中 N 是字符串的长度。这允许字符串字面量转换到哨兵终止的切片，并且哨兵终止可用于许多指针。
+注意：字符串字面量是 UTF-8 编码的。
 
 ```zig
 test "string literal" {
@@ -27,7 +23,7 @@ test "string literal" {
 }
 ```
 
-`[*:0]u8` and `[*:0]const u8` perfectly model C's strings.
+`[*:0]u8` 和 `[*:0]const u8` 完美地模拟了 C 的字符串。
 
 ```zig
 test "C string" {
@@ -41,7 +37,7 @@ test "C string" {
 }
 ```
 
-Sentinel terminated types coerce to their non-sentinel-terminated counterparts.
+哨兵终止类型可转换为其非哨兵终止的对应类型。
 
 ```zig
 test "coercion" {
@@ -59,10 +55,7 @@ test "coercion" {
 }
 ```
 
-Sentinel terminated slicing is provided which can be used to create a sentinel
-terminated slice with the syntax `x[n..m:t]`, where `t` is the terminator value.
-Doing this is an assertion from the programmer that the memory is terminated
-where it should be - getting this wrong is detectable illegal behaviour.
+可使用语法 `x[n..m:t]` 创建哨兵终止切片，其中 `t` 是终止符的值。这样做表明程序员断言内存在应有的位置终止——断言失败是可检测的非法行为。
 
 ```zig
 test "sentinel terminated slicing" {

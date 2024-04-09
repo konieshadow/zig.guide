@@ -1,10 +1,8 @@
-# Payload Captures
+# 负载捕获
 
-Payload captures use the syntax `|value|` and appear in many places, some of
-which we've seen already. Wherever they appear, they are used to "capture" the
-value from something.
+负载捕获使用语法 `|value|` 并出现在许多地方，其中一些我们已经见过。无论它们出现在哪里，它们都被用来“捕获”某物的值。
 
-With if statements and optionals.
+使用 if 语句和可选类型。
 
 ```zig
 test "optional-if" {
@@ -18,8 +16,7 @@ test "optional-if" {
 }
 ```
 
-With if statements and error unions. The else with the error capture is required
-here.
+使用 if 语句和错误联合类型。这里需要带有错误捕获的 else。
 
 ```zig
 test "error union if" {
@@ -34,7 +31,7 @@ test "error union if" {
 }
 ```
 
-With while loops and optionals. This may have an else block.
+使用 while 循环和可选类型。它可以有一个 else 块。
 
 ```zig
 test "while optional" {
@@ -50,8 +47,7 @@ test "while optional" {
 }
 ```
 
-With while loops and error unions. The else with the error capture is required
-here.
+使用 while 循环和错误联合类型。这里需要带有错误捕获的 else。
 
 ```zig
 var numbers_left2: u32 = undefined;
@@ -74,7 +70,7 @@ test "while error union capture" {
 }
 ```
 
-For loops.
+For 循环。
 
 ```zig
 test "for capture" {
@@ -83,7 +79,7 @@ test "for capture" {
 }
 ```
 
-Switch cases on tagged unions.
+标记联合体上的 switch cases。
 
 ```zig
 const Info = union(enum) {
@@ -112,11 +108,8 @@ test "switch capture" {
 }
 ```
 
-As we saw in the Union and Optional sections above, values captured with the
-`|val|` syntax are immutable (similar to function arguments), but we can use
-pointer capture to modify the original values. This captures the values as
-pointers that are themselves still immutable, but because the value is now a
-pointer, we can modify the original value by dereferencing it:
+正如我们在上面的联合类型和可选类型部分中看到的，使用 `|val|` 语法捕获的值是不可变的（类似于函数参数），但我们可以使用指针捕获来修改原始值。
+这将值捕获为本身仍然不可变的指针，但因为该值现在是一个指针，所以我们可以通过解引用来修改原始值：
 
 ```zig
 test "for with pointer capture" {

@@ -1,8 +1,6 @@
-# Many-item Pointers
+# 多元素指针
 
-Sometimes, you may have a pointer to an unknown number of elements. `[*]T` is
-the solution for this, which works like `*T` but also supports indexing syntax,
-pointer arithmetic, and slicing. Unlike `*T`, it cannot point to a type that
-does not have a known size. `*T` coerces to `[*]T`.
+有时，您可能有一个指向未知数量元素的指针。`[*]T` 是这个问题的解决方案，其工作方式与 `*T` 类似，但也支持索引语法、指针算数和切片。
+与 `*T` 不同，它不能指向没有已知大小的类型。`*T` 可转换为 `[*]T`。
 
-These many pointers may point to any amount of elements, including 0 and 1.
+这些指针可指向任意数量的元素，包括 0 和 1。

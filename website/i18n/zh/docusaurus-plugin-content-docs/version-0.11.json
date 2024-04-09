@@ -8,7 +8,7 @@
     "description": "The label for category Getting Started in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Language": {
-    "message": "Language",
+    "message": "语言",
     "description": "The label for category Language in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Standard Library": {

@@ -1,20 +1,12 @@
-# Vectors
+# 向量
 
-Zig provides vector types for SIMD. These are not to be conflated with vectors
-in a mathematical sense, or vectors like C++'s std::vector (for this, see
-"Arraylist" in chapter 2). Vectors may be created using the
-[`@Type`](https://ziglang.org/documentation/master/#Type) built-in we used
-earlier, and
-[`std.meta.Vector`](https://ziglang.org/documentation/master/std/#std;meta.Vector)
-provides a shorthand for this.
+Zig 为 SIMD 提供向量类型。这些不能与数学意义上的向量或 C++ 中的 std::vector（为此，请参阅第二章中的“数组”）混为一谈。
+向量可以使用我们之前使用过的内置 [`@Type`](https://ziglang.org/documentation/master/#Type) 来创建，而 [`std.meta.Vector`](https://ziglang.org/documentation/master/std/#std;meta.Vector) 为此提供了一个简写。
 
-Vectors can only have child types of booleans, integers, floats and pointers.
+向量只能由 bool、整数、浮点数和指针作为子类型。
 
-Operations between vectors with the same child type and length can take place.
-These operations are performed on each of the values in the
-vector.[`std.meta.eql`](https://ziglang.org/documentation/master/std/#std;meta.eql)
-is used here to check for equality between two vectors (also useful for other
-types like structs).
+具有相同子类型和长度的向量之间可以进行运算。这些操作对向量中的每个值执行。
+[`std.meta.eql`](https://ziglang.org/documentation/master/std/#std;meta.eql) 在此处用于检查两个向量之间的相等性（对于其他类型比如结构体也很有用）。
 
 ```zig
 const meta = @import("std").meta;
@@ -27,7 +19,7 @@ test "vector add" {
 }
 ```
 
-Vectors are indexable.
+向量是可索引的。
 
 ```zig
 test "vector indexing" {
@@ -36,10 +28,7 @@ test "vector indexing" {
 }
 ```
 
-The built-in function
-[`@splat`](https://ziglang.org/documentation/master/#splat) may be used to
-construct a vector where all of the values are the same. Here we use it to
-multiply a vector by a scalar.
+内置函数 [`@splat`](https://ziglang.org/documentation/master/#splat) 可用于构造所有值都相同的向量。这里我们用它来将向量乘以标量。
 
 ```zig
 test "vector * scalar" {
@@ -49,7 +38,7 @@ test "vector * scalar" {
 }
 ```
 
-Vectors do not have a `len` field like arrays, but may still be looped over.
+向量没有像数组那样的 `len` 字段，但仍然可以循环。
 
 ```zig
 test "vector looping" {
@@ -64,12 +53,10 @@ test "vector looping" {
 }
 ```
 
-Vectors coerce to their respective arrays.
+向量可转换为它们对应的数组。
 
 ```zig
 const arr: [4]f32 = @Vector(4, f32){ 1, 2, 3, 4 };
 ```
 
-It is worth noting that using explicit vectors may result in slower software if
-you do not make the right decisions - the compiler's auto-vectorisation is
-fairly smart as-is.
+值得注意的是，如果您没有做出正确的决定，使用显式向量可能会导致软件速度变慢——编译器的自动向量化本身就相当智能。

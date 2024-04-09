@@ -3,29 +3,22 @@ import CodeBlock from "@theme/CodeBlock";
 import Slices from "!!raw-loader!./14.slices.zig";
 import Slices2 from "!!raw-loader!./14.slices-2.zig";
 
-# Slices
+# 切片
 
-Slices can be thought of as a pair of `[*]T` (the pointer to the data) and a
-`usize` (the element count). Their syntax is `[]T`, with `T` being the child
-type. Slices are used heavily throughout Zig for when you need to operate on
-arbitrary amounts of data. Slices have the same attributes as pointers, meaning
-that there also exists const slices. For loops also operate over slices. String
-literals in Zig coerce to `[]const u8`.
+切片可以被认为是一对 `[*]T`（指向数据的指针）和一个 `usize`（元素的数量）。它们的语法是 `[]T`，其中 `T` 是子类型。
+当您需要操作任意数量的数据时，可以在 Zig 中大量地使用切片。
+For 循环也可以对切片进行操作。Zig 中的字符串文字可转换为 `[]const u8`。
 
-Here, the syntax `x[n..m]` is used to create a slice from an array. This is
-called **slicing**, and creates a slice of the elements starting at `x[n]` and
-ending at `x[m - 1]`. This example uses a const slice, as the values to which
-the slice points need not be modified.
+这里，语法 `x[n..m]` 用于从数组创建切片。这称为切片，并创建从 `x[n]` 开始到 x[m - 1]` 结束的元素切片。
+此示例使用 const 切片，因为切片指向的值不允许被修改。
 
 <CodeBlock language="zig">{Slices}</CodeBlock>
 
-When these `n` and `m` values are both known at compile time, slicing will
-actually produce a pointer to an array. This is not an issue as a pointer to an
-array i.e. `*[N]T` will coerce to a `[]T`.
+当这些 `n` 和 `m` 在编译期都已知时，切片实际上会生成一个指向数组的指针。这不是问题，因为指向数组的指针即 `*[N]T` 可转换为 `[]T`。
 
 <CodeBlock language="zig">{Slices2}</CodeBlock>
 
-The syntax `x[n..]` can also be used when you want to slice to the end.
+当你想要切片到末尾时，也可以使用语法 `x[n..]`。
 
 ```zig
 test "slices 3" {
@@ -35,9 +28,9 @@ test "slices 3" {
 }
 ```
 
-Types that may be sliced are arrays, many pointers and slices.
+可以切片的类型有数组、许多指针和切片。
 
 :::info
-We can now apply our knowledge and [make another program together](/posts/fahrenheit-to-celsius).
+我们现在可以运用我们的知识[一起制作另一个程序](/posts/fahrenheit-to-celsius)。
 
 :::

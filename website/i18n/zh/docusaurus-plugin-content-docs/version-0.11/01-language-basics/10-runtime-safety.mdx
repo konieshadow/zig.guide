@@ -2,16 +2,13 @@ import CodeBlock from "@theme/CodeBlock";
 
 import SwitchUnreachable from "!!raw-loader!./10.switch-unreachable.zig";
 
-# Runtime Safety
+# 运行时安全性
 
-Zig provides a level of safety, where problems may be found during execution.
-Safety can be left on, or turned off. Zig has many cases of so-called
-**detectable illegal behaviour**, meaning that illegal behaviour will be caught
-(causing a panic) with safety on, but will result in undefined behaviour with
-safety off. Users are strongly recommended to develop and test their software
-with safety on, despite its speed penalties.
+Zig 提供一定程度的安全性，在执行过程中可能会发现问题。安全功能可以保持开启或关闭。
+Zig 有很多被称为**可检测的非法行为**的情况，这意味着在安全性打开时非法行为会被捕获（产生 panic)，但在安全性关闭时将导致 undefined behaviour。
+强烈建议用户在安全性打开下开发和测试，尽管这会降低性能。
 
-For example, runtime safety protects you from out of bounds indices.
+例如，运行时安全性可以保护您免受索引越界的影响。
 
 ```zig
 test "out of bounds" {
@@ -29,9 +26,7 @@ test "out of bounds"...index out of bounds
              ^
 ```
 
-The user may disable runtime safety for the current block using the built-in
-function
-[`@setRuntimeSafety`](https://ziglang.org/documentation/master/#setRuntimeSafety).
+用户可以使用内置函数 [`@setRuntimeSafety`](https://ziglang.org/documentation/master/#setRuntimeSafety) 禁用当前块的运行时安全性。
 
 ```zig
 test "out of bounds, no safety" {
@@ -43,20 +38,14 @@ test "out of bounds, no safety" {
 }
 ```
 
-Safety is off for some build modes (to be discussed later).
+某些构建模式的安全性已设置为关闭（稍后讨论）。
 
 # Unreachable
 
-[`unreachable`](https://ziglang.org/documentation/master/#unreachable) is an
-assertion to the compiler that this statement will not be reached. It can tell
-the compiler that a branch is impossible, which the optimiser can then take
-advantage of. Reaching an
-[`unreachable`](https://ziglang.org/documentation/master/#unreachable) is
-detectable illegal behaviour.
+[`unreachable`](https://ziglang.org/documentation/master/#unreachable) 是向编译器发出的断言，表明该语句将无法执行到。
+它可以告诉编译器分支是不可能的，然后优化器可以利用它。执行到 [`unreachable`](https://ziglang.org/documentation/master/#unreachable) 的代码是可检测的非法行为。
 
-As it is of the type
-[`noreturn`](https://ziglang.org/documentation/master/#noreturn), it is
-compatible with all other types. Here it coerces to u32.
+由于它是 [`noreturn`](https://ziglang.org/documentation/master/#noreturn) 类型，因此它与所有其他类型兼容。这里它转换为u32。
 
 ```zig
 test "unreachable" {
@@ -73,6 +62,6 @@ test "unreachable"...reached unreachable code
                                       ^
 ```
 
-Here is an unreachable being used in a switch.
+这是一个在 switch 中使用 unreachable 的例子。
 
 <CodeBlock language="zig">{SwitchUnreachable}</CodeBlock>

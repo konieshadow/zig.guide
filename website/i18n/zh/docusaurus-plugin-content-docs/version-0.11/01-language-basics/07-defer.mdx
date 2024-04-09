@@ -5,16 +5,12 @@ import DeferMulti from "!!raw-loader!./07.defer-multi.zig";
 
 # Defer
 
-Defer is used to execute a statement while exiting the current block.
+Defer 用于在退出当前块时执行语句。
 
 <CodeBlock language="zig">{Defer}</CodeBlock>
 
-When there are multiple defers in a single block, they are executed in reverse
-order.
+当单个块中有多个 defer 时，它们会反向执行命令。
 
 <CodeBlock language="zig">{DeferMulti}</CodeBlock>
 
-Defer is useful to ensure that resources are cleaned up when they are no longer needed.
-Instead of needing to remember to manually free up the resource,
-you can add a defer statement right next to the statement which allocates that resource.
-
+Defer 对于确保资源在不再需要时被清理很有用。无需记住手动释放资源，您可以在分配该资源的语句旁边添加一个 defer 语句。

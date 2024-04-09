@@ -1,7 +1,6 @@
-# Pointer Sized Integers
+# 指针大小的整数
 
-`usize` and `isize` are given as unsigned and signed integers which are the same
-size as pointers.
+`usize` 和 `isize` 以无符号和有符号整数形式给出，其大小与指针相同。
 
 ```zig
 test "usize" {

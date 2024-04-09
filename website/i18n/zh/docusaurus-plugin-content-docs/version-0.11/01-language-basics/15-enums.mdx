@@ -5,39 +5,34 @@ import EnumOrdinalOverride from "!!raw-loader!./15.enum-ordinal-override.zig";
 import EnumMethods from "!!raw-loader!./15.enum-methods.zig";
 import EnumDeclarations from "!!raw-loader!./15.enum-declarations.zig";
 
-# Enums
+# 枚举
 
-Zig's enums allow you to define types with a restricted set of named values.
+Zig 的枚举允许您使用一组有限的命名值来定义类型。
 
-Let's declare an enum.
+让我们声明一个枚举。
 
 ```zig
 const Direction = enum { north, south, east, west };
 ```
 
-Enums types may have specified (integer) tag types.
+枚举类型可能具有指定的（整数）类型。
 
 ```zig
 const Value = enum(u2) { zero, one, two };
 ```
 
-Enum's ordinal values start at 0. They can be accessed with the built-in
-function
-[`@intFromEnum`](https://ziglang.org/documentation/master/#intFromEnum).
+枚举的序数值从 0 开始。可以使用内置函数 [`@intFromEnum`](https://ziglang.org/documentation/master/#intFromEnum) 访问它们。
 
 <CodeBlock language="zig">{EnumOrdinal}</CodeBlock>
 
-Values can be overridden, with the next values continuing from there.
+值可以被覆盖，下一个值从那里继续。
 
 <CodeBlock language="zig">{EnumOrdinalOverride}</CodeBlock>
 
-Enums can be given methods. These act as namespaced functions that can be called
-with the dot syntax.
+枚举可以被赋予方法。它们充当命名空间函数，可以使用点语法来调用。
 
 <CodeBlock language="zig">{EnumMethods}</CodeBlock>
 
-Enums can also be given `var` and `const` declarations. These act as namespaced
-globals, and their values are unrelated and unattached to instances of the enum
-type.
+枚举也可以被赋予 `var` 和 `const` 声明。它们充当命名空间全局变量，它们的值与枚举类型的实列无关且不会附加到枚举上。
 
 <CodeBlock language="zig">{EnumDeclarations}</CodeBlock>

@@ -1,7 +1,6 @@
-# Anonymous Structs
+# 匿名结构体
 
-The struct type may be omitted from a struct literal. These literals may coerce
-to other struct types.
+结构体字面量中可以省略结构体类型。这些字面量可转换为其他结构体类型。
 
 ```zig
 test "anonymous struct literal" {
@@ -16,8 +15,7 @@ test "anonymous struct literal" {
 }
 ```
 
-Anonymous structs may be completely anonymous i.e. without being coerced to
-another struct type.
+匿名结构体可以是完全匿名的，即不转换为其他的结构体类型。
 
 ```zig
 test "fully anonymous struct" {
@@ -40,15 +38,11 @@ fn dump(args: anytype) !void {
 
 <!-- TODO: mention tuple slicing when it's implemented -->
 
-Anonymous structs without field names may be created and are referred to as
-**tuples**. These have many of the properties that arrays do; tuples can be
-iterated over, indexed, can be used with the `++` and `**` operators, and have a
-len field. Internally, these have numbered field names starting at `"0"`, which
-may be accessed with the special syntax `@"0"` which acts as an escape for the
-syntax - things inside `@""` are always recognised as identifiers.
+可以创建没有字段名称的匿名结构体，并将其称为**元组**（**tuples**）。
+它们具有数组的许多特性；元组可以迭代、索引、可以与 `++` 和 `**` 运算符一起使用，并且有一个 len 字段。
+在内部，它们具有从 `"0"` 开始编号的字段名称，这些字段可以通过特殊语法 `@"0"` 进行访问，该语法有转义的作用——在 `@""` 内的东西总是被识别为标识符。
 
-An `inline` loop must be used to iterate over the tuple here, as the type of
-each tuple field may differ.
+必须使用内联（`inline`）循环来迭代此处的元组，因为每个元组字段的类型可能不同。
 
 ```zig
 test "tuple" {

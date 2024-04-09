@@ -5,22 +5,18 @@ import SwitchExpression from "!!raw-loader!./09.switch-expression.zig";
 
 # Switch
 
-Zig's `switch` works as both a statement and an expression. The types of all
-branches must coerce to the type which is being switched upon. All possible
-values must have an associated branch - values cannot be left out. Cases cannot
-fall through to other branches.
+Zig 的 `switch` 既可以用作语句，也可以用作表达式。所有分支的类型必须都可以转换为 switch 表达式的值的类型。所有可能的值必须有一个对应的分支——值不能被遗漏。条件不能 fall through 到其他分支。
 
-An example of a switch statement. The else is required to satisfy the
-exhaustiveness of this switch.
+Switch 语句的示例。Else 需要穷尽这个 switch 的所有可能。
 
 <CodeBlock language="zig">{SwitchStatement}</CodeBlock>
 
-Here is the former, but as a switch expression.
+这和前面的例子相同，不过是作为一个 switch 表达式。
 
 <CodeBlock language="zig">{SwitchExpression}</CodeBlock>
 
 :::info
 
-Now is the perfect time to use what you've learned and [solve a problem together](/posts/fizz-buzz).
+现在是运用所学知识[一起解决问题](/posts/fizz-buzz)的最佳时机。
 
 :::

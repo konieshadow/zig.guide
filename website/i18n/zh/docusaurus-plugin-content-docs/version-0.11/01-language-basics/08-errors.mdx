@@ -11,62 +11,41 @@ import ErrorSetMerge from "!!raw-loader!./08.error-set-merge.zig";
 
 # Errors
 
-An error set is like an enum (details on Zig's enums later), where each error in
-the set is a value. There are no exceptions in Zig; errors are values. Let's
-create an error set.
+错误集就像一个枚举（稍后将详细介绍 Zig 的枚举），其中集合中的每个错误都是一个值。Zig 中没有异常；错误是值。让我们创建一个错误集。
 
 <CodeBlock language="zig">{ErrorSet}</CodeBlock>
 
-Error sets coerce to their supersets.
+错误集可转换为它们的超集。
 
 <CodeBlock language="zig">{ErrorSetCoercion}</CodeBlock>
 
-An error set type and another type can be combined with the `!` operator to form
-an error union type. Values of these types may be an error value or a value of
-the other type.
+一个错误集类型和另一个类型可以通过 `!` 操作符组合起来形成错误联合类型。这些类型的值可能是错误值或另一个类型的值。
 
-Let's create a value of an error union type. Here
-[`catch`](https://ziglang.org/documentation/master/#catch) is used, which is
-followed by an expression which is evaluated when the value preceding it is an
-error. The catch here is used to provide a fallback value, but could instead be
-a [`noreturn`](https://ziglang.org/documentation/master/#noreturn) - the type of
-`return`, `while (true)` and others.
+让我们创建一个错误联合类型的值。这里使用了 [`catch`](https://ziglang.org/documentation/master/#catch)，它后面跟着一个表达式，当它前面的值是错误时，就会计算该表达式。这里的 catch
+用于提供后备值，但也可以是 [`noreturn`](https://ziglang.org/documentation/master/#noreturn) —— `return`、`while (true)` 等的类型。
 
 <CodeBlock language="zig">{ErrorUnion}</CodeBlock>
 
-Functions often return error unions. Here's one using a catch, where the `|err|`
-syntax receives the value of the error. This is called **payload capturing**,
-and is used similarly in many places. We'll talk about it in more detail later
-in the chapter. Side note: some languages use similar syntax for lambdas - this
-is not true for Zig.
+函数经常返回错误联合类型。这是一个使用 catch 的例子，使用 `|err|` 语法接收错误的值。这称为**负载捕获**，并且在很多地方都有类似的使用。我们将在本章后面更详细地讨论它。旁注：某些语言使用类似的语法作为 lambdas —— Zig 则不然。
 
 <CodeBlock language="zig">{ErrorPayloadCapture}</CodeBlock>
 
-`try x` is a shortcut for `x catch |err| return err`, and is commonly used where
-handling an error isn't appropriate. Zig's
-[`try`](https://ziglang.org/documentation/master/#try) and
-[`catch`](https://ziglang.org/documentation/master/#catch) are unrelated to
-try-catch in other languages.
+`try x` 是 `x catch |err| return err` 的快捷方式，通常在不适合处理错误的情况下使用。Zig 的 [`try`](https://ziglang.org/documentation/master/#try) 和
+[`catch`](https://ziglang.org/documentation/master/#catch) 与其他语言中的 try-catch 无关。
 
 <CodeBlock language="zig">{ErrorTry}</CodeBlock>
 
-[`errdefer`](https://ziglang.org/documentation/master/#errdefer) works like
-[`defer`](https://ziglang.org/documentation/master/#defer), but only executing
-when the function is returned from with an error inside of the
-[`errdefer`](https://ziglang.org/documentation/master/#errdefer)'s block.
+[`errdefer`](https://ziglang.org/documentation/master/#errdefer) 的工作方式与 [`defer`](https://ziglang.org/documentation/master/#defer) 类似，但仅当函数从 [`errdefer`](https://ziglang.org/documentation/master/#errdefer)
+块内出现错误返回时才执行。
 
 <CodeBlock language="zig">{Errdefer}</CodeBlock>
 
-Error unions returned from a function can have their error sets inferred by not
-having an explicit error set. This inferred error set contains all possible
-errors that the function may return.
+从函数返回的错误联合类型可以通过没有显式错误集来推断其错误集。该推断错误集包含该函数可能返回的所有可能的错误。
 
 <CodeBlock language="zig">{ErrorSetInferred}</CodeBlock>
 
-Error sets can be merged.
+错误集可以合并。
 
 <CodeBlock language="zig">{ErrorSetMerge}</CodeBlock>
 
-`anyerror` is the global error set, which due to being the superset of all error
-sets, can have an error from any set coerced to it. Its usage should be
-generally avoided.
+`anyerror` 是全局错误集，由于它是所有错误集的超集，因此可以将任何集合中的错误转换到它。一般应避免使用它。

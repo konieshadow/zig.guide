@@ -1,9 +1,7 @@
-# Labelled Blocks
+# 命名块
 
-Blocks in Zig are expressions and can be given labels, which are used to yield
-values. Here, we are using a label called `blk`. Blocks yield values, meaning
-they can be used in place of a value. The value of an empty block `{}` is a
-value of the type `void`.
+Zig 中的块是表达式，可以给定标签，用于生成值。在这里，我们使用一个名为 `blk` 的标签。块产生值，这意味着它们可以用来代替值。
+空快 `{}` 的类型是 `void`。
 
 ```zig
 test "labelled blocks" {
@@ -18,7 +16,7 @@ test "labelled blocks" {
 }
 ```
 
-This can be seen as being equivalent to C's `i++`.
+这可以看作相当于 C 的 `i++`。
 
 <!--no_test-->
 

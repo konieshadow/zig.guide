@@ -4,17 +4,15 @@ import Struct from "!!raw-loader!./16.struct.zig";
 import StructDefaults from "!!raw-loader!./16.struct-defaults.zig";
 import StructDeclarations from "!!raw-loader!./16.struct-declarations.zig";
 
-# Structs
+# 结构体
 
-Structs are Zig's most common kind of composite data type, allowing you to
-define types that can store a fixed set of named fields. Zig gives no guarantees
-about the in-memory order of fields in a struct or its size. Like arrays,
-structs are also neatly constructed with `T{}` syntax. Here is an example of
-declaring and filling a struct.
+结构体是 Zig 最常见的复合数据类型，允许您定义可以存储一组固定命名字段的类型。
+Zig 不保证结构体中字段的内存顺序或其大小。与数组一样，结构体也可以使用 `T{}` 语法整齐的构造。
+这是声明和填充结构体的示例。
 
 <CodeBlock language="zig">{Struct}</CodeBlock>
 
-Struct fields cannot be implicitly uninitialised:
+结构体字段不能隐式地未初始化：
 
 ```zig
 test "missing struct field" {
@@ -32,15 +30,13 @@ error: missing field: 'y'
                         ^
 ```
 
-Fields may be given defaults:
+字段可以有默认值：
 
 <CodeBlock language="zig">{StructDefaults}</CodeBlock>
 
-Like enums, structs may also contain functions and declarations.
+与枚举一样，结构体也可以包含函数和声明。
 
-Structs have the unique property that when given a pointer to a struct, one
-level of dereferencing is done automatically when accessing fields. Notice how,
-in this example, self.x and self.y are accessed in the swap function without
-needing to dereference the self pointer.
+结构体具有独特的属性，当给定一个指向结构体的指针时，在访问字段时会自动完成一级解引用。
+请注意，在此示例中如何在交换函数中访问 self.x 和 self.y，而无需解引用自身的指针。
 
 <CodeBlock language="zig">{StructDeclarations}</CodeBlock>

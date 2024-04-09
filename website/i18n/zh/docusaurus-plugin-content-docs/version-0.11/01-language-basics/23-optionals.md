@@ -1,8 +1,6 @@
-# Optionals
+# 可选类型
 
-Optionals use the syntax `?T` and are used to store the data
-[`null`](https://ziglang.org/documentation/master/#null), or a value of type
-`T`.
+可选类型使用语法 `?T` 存储 [`null`](https://ziglang.org/documentation/master/#null) 或 `T` 的一个值。
 
 ```zig
 test "optional" {
@@ -15,9 +13,7 @@ test "optional" {
 }
 ```
 
-Optionals support the `orelse` expression, which acts when the optional is
-[`null`](https://ziglang.org/documentation/master/#null). This unwraps the
-optional to its child type.
+可选类型支持 `orelse` 表达式，该表达式在值为 [`null`](https://ziglang.org/documentation/master/#null) 时起作用。这会将可选类型解包为其子类型。
 
 ```zig
 test "orelse" {
@@ -28,10 +24,7 @@ test "orelse" {
 }
 ```
 
-`.?` is a shorthand for `orelse unreachable`. This is used for when you know it
-is impossible for an optional value to be null, and using this to unwrap a
-[`null`](https://ziglang.org/documentation/master/#null) value is detectable
-illegal behaviour.
+`.?` 是 `orelse unreachable` 的简写。当您知道可选类型不可能为空，并且使用它来展开 [`null`](https://ziglang.org/documentation/master/#null) 是可检测的非法行为时，可以使用此方法。
 
 ```zig
 test "orelse unreachable" {
@@ -43,14 +36,10 @@ test "orelse unreachable" {
 }
 ```
 
-Payload capturing works in many places for optionals, meaning that in the event
-that it is non-null, we can "capture" its non-null value.
+负载捕获在很多地方都适用于可选类型，这意味着如果它非空，我们可以“捕获”它的非空值。
 
-Here we use an `if` optional payload capture; a and b are equivalent here.
-`if (b) |value|` captures the value of `b` (in the cases where `b` is not null),
-and makes it available as `value`. As in the union example, the captured value
-is immutable, but we can still use a pointer capture to modify the value stored
-in `b`.
+这里我们使用 `if` 对可选类型进行负载捕获；a 和 b 在这里是等价的。`if (b) |value|` 捕获 `b` 的值（当 `b` 非空时），并使其可作为 `value` 被使用。
+与联合类型中的示例一样，捕获的值是不可变的，但我们仍然可以使用指针捕获来修改存储在 `b` 中的值。
 
 ```zig
 test "if optional payload capture" {
@@ -68,7 +57,7 @@ test "if optional payload capture" {
 }
 ```
 
-And with `while`:
+使用 `while`：
 
 ```zig
 var numbers_left: u32 = 4;
@@ -87,10 +76,7 @@ test "while null capture" {
 }
 ```
 
-Optional pointer and optional slice types do not take up any extra memory
-compared to non-optional ones. This is because internally they use the 0 value
-of the pointer for `null`.
+与非可选类型相比，可选类型指针和可选类型切片不会占用任何额外的内存。
+这是因为它们在内部使用指针 0 值来表示 `null`。
 
-This is how null pointers in Zig work - they must be unwrapped to a non-optional
-before dereferencing, which stops null pointer dereferences from happening
-accidentally.
+这就是 Zig 中空指针的工作方式——在解引用之前必须将它们解包为非可选类型，这样可以防止意外发生空指针解引用。
