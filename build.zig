@@ -2,7 +2,7 @@ const std = @import("std");
 const zig_version = @import("builtin").zig_version;
 
 // Used for any unversioned content (for now just /blog)
-const current_minor_version = 11;
+const current_minor_version = 12;
 
 const version_path = std.fmt.comptimePrint(
     "website/versioned_docs/version-0.{}/",
@@ -158,12 +158,11 @@ const DebugDirLogger = struct {
         return ds;
     }
     fn make(step: *std.Build.Step, _: *std.Progress.Node) !void {
-        std.log.debug("test-dir at {s}", .{
-            @fieldParentPtr(
-                WriteFileStep,
-                "step",
-                step.dependencies.items[0],
-            ).generated_directory.path.?,
-        });
+        const dependency = step.dependencies.items[0];
+        if (dependency.id != .write_file) unreachable; // DebugDirLogger only supports a WriteFileStep dependency
+        std.log.debug(
+            "test-dir at {s}",
+            .{@as(*WriteFileStep, @fieldParentPtr("step", dependency)).generated_directory.path.?},
+        );
     }
 };
